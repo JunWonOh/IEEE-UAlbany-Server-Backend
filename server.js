@@ -5,7 +5,6 @@ var cors = require('cors');
 var _a = require('express-openid-connect'), auth = _a.auth, requiresAuth = _a.requiresAuth;
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var morgan = require('morgan');
 var path = require('path');
 var app = express();
 var PORT = 3000;
@@ -19,7 +18,7 @@ connection.once('open', function () {
 });
 var usersRouter = require('./routes/users.routes');
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static("frontend/build"));
+// app.use(express.static("frontend/build"))
 app.use('/users', usersRouter);
 app.use(auth({
     //authRequired: every route does not need authentication
@@ -35,7 +34,6 @@ app.get('/login', function (req, res) {
     res.send("Logging in");
 });
 // Handling GET / Request
-app.use(morgan('tiny'));
 // Server setup
 app.listen(process.env.PORT || PORT, function () {
     console.log('The application is listening '

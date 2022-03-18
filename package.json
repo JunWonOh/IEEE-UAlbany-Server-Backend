@@ -6,11 +6,9 @@
   "postinstall": "tsc",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc && cd frontend && tsc && npm run build",
-    "install-client": "cd frontend && npm install",
-    "heroku postbuild": "npm run install-client && npm run build",
-    "start": "nodemon server.js",
-    "client": "cd frontend && npm start"
+    "build": "tsc",
+    "heroku postbuild": "npm run build",
+    "start": "nodemon server.js"
   },
   "engines": {
     "node": "14.x"

@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "jsx": "react",
     "moduleResolution": "node",
     "types": [
-      "@types/jest"
+      "@types/jest",
+      "@types/node"
       ], 
     /* Visit https://aka.ms/tsconfig.json to read more about this file */
 
