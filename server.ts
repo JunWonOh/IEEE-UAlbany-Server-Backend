@@ -46,7 +46,10 @@ app.get('/login', function(req, res) {
 })
 
 // Handling GET / Request
-
+app.get('/', function(req, res) {
+    console.log(JSON.stringify(req.user));
+    res.send(req.user);
+})
 
 // Server setup
 app.listen(process.env.PORT || PORT,() => {
