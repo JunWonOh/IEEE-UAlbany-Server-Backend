@@ -55,7 +55,6 @@ router.route('/').post((req, res) => {
 
 router.route('/recentmembers').get((req, res) => {
     //get last 5 users in descending order
-    console.log(req.query)
     if (process.env.ACCESSKEY === req.query.accesskey) {
         User.find().sort({$natural: 1}).limit(5)
             .then(users => res.json(users))
