@@ -55,7 +55,7 @@ router.route('/').post((req, res) => {
 
 router.route('/recentmembers').get((req, res) => {
     //get last 5 users in descending order
-    if (process.env.ACCESSKEY === req.body.accesskey) {
+    if (process.env.ACCESSKEY === req.body.data.accesskey) {
         User.find().sort({$natural: 1}).limit(5)
             .then(users => res.json(users))
             .catch(err => res.status(400).json('Error: ' + err));
@@ -66,7 +66,7 @@ router.route('/recentmembers').get((req, res) => {
 
 router.route('/').get((req, res) => {
     //get all users in ascending order
-    if (process.env.ACCESSKEY === req.body.accesskey) {
+    if (process.env.ACCESSKEY === req.body.data.accesskey) {
         User.find().sort({$natural: -1})
             .then(users => res.json(users))
             .catch(err => res.status(400).json('Error: ' + err));
