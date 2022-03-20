@@ -28,7 +28,10 @@ router.route('/').post((req, res) => {
                 email: req.body.email,
                 verifiedUser: false,
             });
-            await newUser.save();
+            await newUser.save().catch((error) => {
+                assert.isNotOk(error,'Promise error');
+                done();
+            });
             res.send("User has been logged");
         }
     })
