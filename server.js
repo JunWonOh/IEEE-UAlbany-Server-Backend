@@ -1,22 +1,28 @@
 require('dotenv').config();
 // Importing module
-var express = require('express');
-var cors = require('cors');
-var _a = require('express-openid-connect'), auth = _a.auth, requiresAuth = _a.requiresAuth;
-var bodyParser = require('body-parser');
-var mongoose = require('mongoose');
-var path = require('path');
-var app = express();
-var PORT = 3000;
+const express = require('express');
+const cors = require('cors');
+const { auth, requiresAuth } = require('express-openid-connect');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
+const path = require('path');
+// import express from "express";
+// import cors from "cors";
+// import { auth, requiresAuth } from "express-openid-connect";
+// import bodyParser from "body-parser";
+// import mongoose from "mongoose";
+// import path from "path";
+const app = express();
+const PORT = 3000;
 app.use(cors());
 app.use(express.json());
-var uri = process.env.ATLAS_URI;
+const uri = process.env.ATLAS_URI;
 mongoose.connect(uri, { useNewUrlParser: true });
-var connection = mongoose.connection;
-connection.once('open', function () {
+const connection = mongoose.connection;
+connection.once('open', () => {
     console.log("MongoDB database connection established successfully");
 });
-var usersRouter = require('./routes/users.routes');
+const usersRouter = require('./routes/users.routes');
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.static("frontend/build"))
 app.use('/users', usersRouter);
@@ -39,7 +45,7 @@ app.get('/login', function (req, res) {
 //     res.send(req.oidc.user);
 // })
 // Server setup
-app.listen(process.env.PORT || PORT, function () {
+app.listen(process.env.PORT || PORT, () => {
     console.log('The application is listening '
         + 'on port http://localhost:' + PORT);
 });

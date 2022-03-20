@@ -8,6 +8,12 @@ const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 
 const path = require('path');
+// import express from "express";
+// import cors from "cors";
+// import { auth, requiresAuth } from "express-openid-connect";
+// import bodyParser from "body-parser";
+// import mongoose from "mongoose";
+// import path from "path";
 const app = express();
 const PORT:Number = 3000;
 

@@ -1,15 +1,10 @@
-// export{};
-var mongoose2 = require('mongoose');
-var Schema = mongoose2.Schema;
-// const {projectSchema} = require("./projects.model")
-var projectSchema = new Schema({
-    id: String,
-    title: String,
-    description: String,
-    link: String
-});
-var userSchema = new Schema({
-    id: {
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const { projectSchema } = require("./projects.model");
+const userSchema = new Schema({
+    discord_id: {
         type: String,
         required: true,
         unique: true
@@ -38,6 +33,5 @@ var userSchema = new Schema({
 }, {
     timestamps: true
 });
-var User = mongoose2.model('User', userSchema);
-var Project = mongoose2.model('Project', projectSchema);
+const User = mongoose.model('User', userSchema);
 module.exports = User;

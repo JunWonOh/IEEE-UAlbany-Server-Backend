@@ -1,20 +1,11 @@
-// export{};
+export{};
 
-const mongoose2 = require('mongoose');
-const Schema = mongoose2.Schema;
-// const {projectSchema} = require("./projects.model")
-
-const projectSchema = new Schema({
-    id: String,
-    title: String,
-    description: String,
-    link: String
-});
-
-
+const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
+const {projectSchema} = require("./projects.model")
 
 const userSchema = new Schema({
-    id: {
+    discord_id: {
         type: String,
         required: true,
         unique: true
@@ -44,7 +35,6 @@ const userSchema = new Schema({
     timestamps: true
 });
 
-const User = mongoose2.model('User', userSchema);
-const Project = mongoose2.model('Project', projectSchema);
+const User = mongoose.model('User', userSchema);
 
 module.exports = User;
