@@ -28,10 +28,11 @@ router.route('/').post((req, res) => {
                 email: req.body.email,
                 verifiedUser: false,
             });
-            await newUser.save().catch((error) => {
-                assert.isNotOk(error,'Promise error');
-                done();
-            });
+            try {
+                await newUser.save();
+            } catch(err) {
+                console.error(err);
+            }
             res.send("User has been logged");
         }
     })
