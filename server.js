@@ -6,12 +6,6 @@ const { auth, requiresAuth } = require('express-openid-connect');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const path = require('path');
-// import express from "express";
-// import cors from "cors";
-// import { auth, requiresAuth } from "express-openid-connect";
-// import bodyParser from "body-parser";
-// import mongoose from "mongoose";
-// import path from "path";
 const app = express();
 const PORT = 3000;
 app.use(cors());
@@ -40,10 +34,10 @@ app.get('/login', function (req, res) {
     res.send("Logging in");
 });
 // Handling GET / Request
-// app.get('/', function(req, res) {
-//     console.log(JSON.stringify(req.oidc.user));
-//     res.send(req.oidc.user);
-// })
+app.get('/', function (req, res) {
+    console.log(JSON.stringify(req.oidc.user));
+    res.send("Welcome to IEEE Server backend");
+});
 // Server setup
 app.listen(process.env.PORT || PORT, () => {
     console.log('The application is listening '
