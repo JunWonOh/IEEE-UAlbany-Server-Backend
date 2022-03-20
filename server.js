@@ -34,10 +34,10 @@ app.get('/login', function (req, res) {
     res.send("Logging in");
 });
 // Handling GET / Request
-app.get('/', function (req, res) {
-    console.log(JSON.stringify(req.oidc.user));
-    res.send(req.oidc.user);
-});
+// app.get('/', function(req, res) {
+//     console.log(JSON.stringify(req.oidc.user));
+//     res.send(req.oidc.user);
+// })
 // Server setup
 app.listen(process.env.PORT || PORT, function () {
     console.log('The application is listening '

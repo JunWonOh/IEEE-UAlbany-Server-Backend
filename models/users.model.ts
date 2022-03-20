@@ -1,6 +1,17 @@
-const mongoose_model = require('mongoose');
+// export{};
 
-const Schema = mongoose_model.Schema;
+const mongoose2 = require('mongoose');
+const Schema = mongoose2.Schema;
+// const {projectSchema} = require("./projects.model")
+
+const projectSchema = new Schema({
+    id: String,
+    title: String,
+    description: String,
+    link: String
+});
+
+
 
 const userSchema = new Schema({
     id: {
@@ -28,10 +39,12 @@ const userSchema = new Schema({
         type: Boolean,
         required: false
     },
+    projects: [projectSchema]
 }, {
     timestamps: true
 });
 
-const User = mongoose_model.model('User', userSchema);
+const User = mongoose2.model('User', userSchema);
+const Project = mongoose2.model('Project', projectSchema);
 
 module.exports = User;

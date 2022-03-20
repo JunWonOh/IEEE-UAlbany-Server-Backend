@@ -1,5 +1,13 @@
-var mongoose_model = require('mongoose');
-var Schema = mongoose_model.Schema;
+// export{};
+var mongoose2 = require('mongoose');
+var Schema = mongoose2.Schema;
+// const {projectSchema} = require("./projects.model")
+var projectSchema = new Schema({
+    id: String,
+    title: String,
+    description: String,
+    link: String
+});
 var userSchema = new Schema({
     id: {
         type: String,
@@ -26,8 +34,10 @@ var userSchema = new Schema({
         type: Boolean,
         required: false
     },
+    projects: [projectSchema]
 }, {
     timestamps: true
 });
-var User = mongoose_model.model('User', userSchema);
+var User = mongoose2.model('User', userSchema);
+var Project = mongoose2.model('Project', projectSchema);
 module.exports = User;
